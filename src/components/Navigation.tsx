@@ -1,13 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Globe, ChevronDown, Menu, X } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Menu, X } from "lucide-react";
+import { GoogleTranslate } from "@/components/GoogleTranslate";
 
 export const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -51,20 +46,7 @@ export const Navigation = () => {
           {/* Desktop Right Side */}
           <div className="hidden md:flex items-center space-x-4">
             {/* Language Selector */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="gap-2">
-                  <Globe className="w-4 h-4" />
-                  English
-                  <ChevronDown className="w-4 h-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-popover border-border">
-                <DropdownMenuItem>English</DropdownMenuItem>
-                <DropdownMenuItem>Spanish</DropdownMenuItem>
-                <DropdownMenuItem>French</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <GoogleTranslate />
 
             {/* Sign In */}
             <Button variant="nav" asChild>
@@ -73,7 +55,7 @@ export const Navigation = () => {
 
             {/* Subscribe Button */}
             <Button variant="electric" size="sm" asChild>
-              <Link to="/subscribe">Subscribe Now</Link>
+              <Link to="/pricing">Subscribe Now</Link>
             </Button>
           </div>
 
@@ -111,7 +93,7 @@ export const Navigation = () => {
                   <Link to="/signin">Sign In</Link>
                 </Button>
                 <Button variant="electric" size="sm" asChild>
-                  <Link to="/subscribe">Subscribe Now</Link>
+                  <Link to="/pricing">Subscribe Now</Link>
                 </Button>
               </div>
             </div>

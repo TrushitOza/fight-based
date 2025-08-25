@@ -1,17 +1,32 @@
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
-import heroImage from "@/assets/hero-video-placeholder.jpg";
+import { Link } from "react-router-dom";
 
 export const HeroSection = () => {
+  // Fighting scene video - You can easily replace this video URL with any other fighting video
+  const heroVideoUrl =
+    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
+
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image (Video placeholder) */}
+      {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt="Boxing training scene"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover"
-        />
+          poster="/api/placeholder/1920/1080"
+        >
+          <source src={heroVideoUrl} type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
+          <img
+            src="/api/placeholder/1920/1080"
+            alt="Fight scene background"
+            className="w-full h-full object-cover"
+          />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background/80"></div>
       </div>
 
@@ -21,11 +36,19 @@ export const HeroSection = () => {
           The Ultimate Destination for Fight Fans
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-inter max-w-2xl mx-auto">
-          Live Events, Exclusive Fights, and Unmissable Action. All in One Place.
+          Live Events, Exclusive Fights, and Unmissable Action. All in One
+          Place.
         </p>
-        <Button variant="electric" size="lg" className="text-lg px-8 py-4 h-auto">
-          <Play className="w-6 h-6 mr-2" />
-          Subscribe Now
+        <Button
+          variant="electric"
+          size="lg"
+          className="text-lg px-8 py-4 h-auto"
+          asChild
+        >
+          <Link to="/pricing">
+            <Play className="w-6 h-6 mr-2" />
+            Subscribe Now
+          </Link>
         </Button>
       </div>
 
