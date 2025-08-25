@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, MessageCircle, Clock } from "lucide-react";
+import { Mail, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export const ContactForm = () => {
@@ -11,25 +11,27 @@ export const ContactForm = () => {
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     toast({
       title: "Message sent successfully!",
       description: "We'll get back to you within 24 hours.",
@@ -47,7 +49,7 @@ export const ContactForm = () => {
           <h2 className="text-3xl font-bebas text-foreground mb-6">
             Send us a message
           </h2>
-          
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="name" className="font-inter">
@@ -113,10 +115,10 @@ export const ContactForm = () => {
               />
             </div>
 
-            <Button 
-              type="submit" 
-              variant="electric" 
-              size="lg" 
+            <Button
+              type="submit"
+              variant="electric"
+              size="lg"
               className="w-full"
               disabled={isSubmitting}
             >
@@ -131,7 +133,7 @@ export const ContactForm = () => {
             <h2 className="text-3xl font-bebas text-foreground mb-6">
               Get in touch
             </h2>
-            
+
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
                 <div className="bg-electric-blue/20 p-3 rounded-lg">
@@ -142,29 +144,12 @@ export const ContactForm = () => {
                     Email Support
                   </h3>
                   <p className="text-muted-foreground font-inter">
-                    For immediate assistance, please email us at{" "}
-                    <a 
-                      href="mailto:support@fightportal.com" 
+                    For assistance, please email us at{" "}
+                    <a
+                      href="mailto:support@fightportal.com"
                       className="text-electric-blue hover:underline"
                     >
                       support@fightportal.com
-                    </a>
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="bg-electric-blue/20 p-3 rounded-lg">
-                  <MessageCircle className="w-6 h-6 text-electric-blue" />
-                </div>
-                <div>
-                  <h3 className="font-semibold font-inter text-foreground mb-1">
-                    FAQ
-                  </h3>
-                  <p className="text-muted-foreground font-inter">
-                    Find quick answers to common questions in our{" "}
-                    <a href="/faq" className="text-electric-blue hover:underline">
-                      FAQ page
                     </a>
                   </p>
                 </div>
@@ -179,43 +164,11 @@ export const ContactForm = () => {
                     Response Time
                   </h3>
                   <p className="text-muted-foreground font-inter">
-                    We typically respond to all inquiries within 24 hours during business days.
+                    We typically respond to all inquiries within 24 hours during
+                    business days.
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="bg-card rounded-xl p-8 shadow-card">
-            <h3 className="text-2xl font-bebas text-foreground mb-4">
-              Quick Support
-            </h3>
-            <div className="space-y-3">
-              <a 
-                href="/help/billing" 
-                className="block text-muted-foreground hover:text-electric-blue transition-colors font-inter"
-              >
-                → Billing & Subscription Issues
-              </a>
-              <a 
-                href="/help/technical" 
-                className="block text-muted-foreground hover:text-electric-blue transition-colors font-inter"
-              >
-                → Technical Support
-              </a>
-              <a 
-                href="/help/account" 
-                className="block text-muted-foreground hover:text-electric-blue transition-colors font-inter"
-              >
-                → Account Management
-              </a>
-              <a 
-                href="/help/streaming" 
-                className="block text-muted-foreground hover:text-electric-blue transition-colors font-inter"
-              >
-                → Streaming Problems
-              </a>
             </div>
           </div>
         </div>
